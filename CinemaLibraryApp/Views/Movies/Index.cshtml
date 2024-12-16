@@ -1,0 +1,24 @@
+﻿<link href="css/Moviessheet.css" rel="stylesheet" type="text/css" />
+@model IEnumerable<Movies>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body>
+    <h1>Movies</h1>
+    <br />
+    @for (int i=0; i<Model.Count(); i++)
+    {
+        <div class="box">
+            <a asp-controller = "Movies" asp-action="Movie"asp-route-id="@Model.ElementAt(i).Id">
+            <img src="@Model.ElementAt(i).MoviePoster">
+            </a>
+            <div class="hidden">
+                <h3>@Model.ElementAt(i).Name</h3>
+                <p>Release Date: @Model.ElementAt(i).ReleaseDate</p>
+                <p>Description: @Model.ElementAt(i).Description</p>
+            </div>
+        </div>
+    }
+</body>
+

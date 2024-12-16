@@ -1,0 +1,42 @@
+﻿body {
+}
+
+.borders {
+    border: 2px solid;
+    border-radius: 12px;
+    padding: 5px;
+}
+.box {
+    position: relative;
+    float: left;
+    border-color: cornflowerblue;
+    width: 250px;
+    height: 400px;
+    border: outset;
+    margin: 20px;
+}
+
+.box:hover img {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    filter: brightness(50%);
+}
+
+img {
+    width: 245px;
+    height: 395px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.box:hover .hidden{
+    display: grid;
+}
+
+.hidden {
+    
+    position: absolute;
+    color: white;
+    display: none;
+    width: 250px;
+}

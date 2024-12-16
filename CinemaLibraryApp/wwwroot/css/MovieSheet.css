@@ -1,0 +1,17 @@
+﻿body {
+}
+
+    .box {
+        float: left;
+        padding: 10px;
+        margin: 20px;
+        display: flex;
+    }
+
+    .box div {
+        background-color: antiquewhite;
+        flex: 1;
+        margin: 10px;
+        border: outset;
+        padding: 10px;
+    }

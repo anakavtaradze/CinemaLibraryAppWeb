@@ -1,0 +1,80 @@
+﻿<link href="css/Moviessheet.css" rel="stylesheet" type="text/css" />
+@model Movies
+@{
+    ViewData["Title"] = "Movie";
+}
+
+<style>
+    .borders {
+    border: 2px solid;
+    border-radius: 12px;
+    padding: 5px;
+    height:fit-content;
+}
+.box {
+    position: relative;
+    float: left;
+    border-color: cornflowerblue;
+    height:fit-content;
+    width:fit-content;
+    border: outset;
+    margin: 5px;
+}
+
+.box:hover img {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    filter: brightness(50%);
+}
+
+.box:hover .hidden{
+    display: grid;
+}
+
+.hidden {
+    
+    position: absolute;
+    color: white;
+    display: none;
+    width: 250px;
+}
+</style>
+
+<body>
+    <h1>@Model.Name</h1>
+    <br/>
+    <div style="display:flex;" class="borders">
+            <img style="height: 400px;" src="@Model.MoviePoster">
+            <div style="border-left:1px thin; height: 400px;"></div>
+            <div style="float:left; padding: 10px;">
+                <p>Director: <br /><a href="../../Directors/Director/@Model.Director.Id">@Model.Director.Name @Model.Director.Surname</a></p>
+                <p>Release Date: <br />@Model.ReleaseDate</p>
+                <p>IMBD Rating: @Model.IMBDrating<br />Rotten Tomatoes Rating: @Model.RpttenTomatoesRating</p>
+                <p>Description: <br />@Model.Description</p>
+            </div>
+   </div>
+        <div>
+            <br />
+            <br />
+            <br />
+            <h2>Actors</h2>
+            <div  style="overflow: auto; white-space: nowrap;">
+                @foreach (Actor actor in Model.Actors)
+                {
+                    <div  class= "box, borders" style="width:165px; height: 260px; float:left">
+                        <a asp-controller = "Actors" asp-action="Actor"asp-route-id="@actor.Id">
+                            <img style="height:200px; width:150px; object-fit: cover;" src="@actor.Portrait"/>
+                        </a>
+                        <br>
+                        <h5 style="text-align:center;">@actor.Name <br>@actor.Surname</h5>
+                        </div>
+                }
+            </div>
+        </div>
+        <div>
+            <p>if you want to leave comment click <a asp-controller = "Movies" asp-action="Add"> here </a> </p>
+        </div>
+    
+    
+</body>
+

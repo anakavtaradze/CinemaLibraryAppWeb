@@ -1,0 +1,90 @@
+﻿@model Actor
+@{
+    ViewData["Title"] = "Actor";
+}
+<style>
+    
+.borders {
+    border: 2px solid;
+    border-radius: 12px;
+    padding: 5px;
+}
+.box {
+    position: relative;
+    float: left;
+    border-color: cornflowerblue;
+    width: 250px;
+    height: 400px;
+    border: outset;
+    margin: 5px;
+}
+.box .div{
+    width:inherit;
+}
+.movieImg {
+    width: 245px;
+    height: 395px;
+    object-fit: cover;
+    object-position: center;
+}
+.box:hover .movieImg {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    filter: brightness(50%);
+}
+.box:hover .hidden{
+    display: grid;
+}
+
+.hidden {
+    position: absolute;
+    text-align:center;
+    color: black;
+    display: none;
+    width: 240px;
+}
+</style>
+
+<body>
+    <h1>@Model.Name @Model.Surname</h1>
+    <br/>
+    <div id="actorInfo" class="borders" style="width:25%; float:left;">
+            <img style="width:100%" src="@Model.Portrait" />
+            <br/>
+            <br />
+            <p>born: @Model.BirthDate</p>
+            <p>Rating: @Model.Rating</p>
+    </div>
+    <div id="movies" class="borders" style="width:70%; float:left;">
+        <h2>Movies</h2>
+        <div style="overflow: auto; white-space: nowrap;">
+                @foreach (Movies movie in Model.Movies)
+                {
+                    <div class="box">
+                        <a asp-controller = "Movies" asp-action="Movie"asp-route-id="@movie.Id">
+                            <img class="movieImg" src="@movie.MoviePoster"/>
+                        </a>
+                        <div class="hidden">
+                            <h5 style="width:240px">@movie.Name</h5>
+                        </div>
+                        </div>
+                }
+            </div>
+        </div>
+        
+        <div>
+            <p>if you want to add an actor click <a asp-controller = "Actors" asp-action="Add"> here </a> </p>
+        </div>
+        <div>
+            <p>if you want to update info about the actor click <a asp-controller = "Actors" asp-action="Edit"> here </a> </p>
+        </div>
+        <div>
+            <p>if you want to delete the actor click <a asp-controller = "Actors" asp-action="Delete"> here </a> </p>
+        </div>
+    <script>
+        document.getElementById("movies")height = document.getElementById("actorInfo").height;
+        }
+    </script>
+</body>
+
+

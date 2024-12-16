@@ -1,0 +1,28 @@
+﻿@model Actor
+@{
+    ViewData["Title"] = "Add";
+}
+<body>
+    <h1>Add your actor here</h1>
+    <form method="post" action="Add">
+
+    <label for="name">name of actor:</label>
+    <input asp-for="Name">
+    
+    <label for="surname">surnamename of actor:</label>
+    <input asp-for="Surname">
+    
+    <label for="date">date of birth:</label>
+    <input asp-for="BirthDate">
+    
+    <label for="photo">photo link:</label>
+    <input asp-for="Portrait">
+    
+    <label for="rating">rating:</label>
+    <input asp-for="Rating">
+
+    <button id="button" type="submit">Post</button>
+    </form>
+</body>
+
+
